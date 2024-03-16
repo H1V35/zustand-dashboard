@@ -1,4 +1,4 @@
-import { SideMenu } from '../components';
+import { SideMenu } from '@/components';
 import { Outlet } from 'react-router-dom';
 
 export const DashboardLayout = () => {

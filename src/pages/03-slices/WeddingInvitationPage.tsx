@@ -1,4 +1,4 @@
-import { WhiteCard } from '../../components';
+import { WhiteCard } from '@/components';
 
 export const WeddingInvitationPage = () => {
   return (

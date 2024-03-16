@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { Root } from '../Root';
-import { AuthLayout, DashboardLayout } from '../layouts';
+import { Root } from '@/Root';
+import { AuthLayout, DashboardLayout } from '@/layouts';
 import {
   BearPage,
   Dashboard,
@@ -9,7 +9,7 @@ import {
   LoginPage,
   PersonPage,
   WeddingInvitationPage,
-} from '../pages';
+} from '@/pages';
 
 export const router = createBrowserRouter([
   {

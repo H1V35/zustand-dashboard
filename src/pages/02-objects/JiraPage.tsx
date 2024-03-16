@@ -1,4 +1,4 @@
-import { JiraTasks } from '../../components';
+import { JiraTasks } from '@/components';
 
 export const JiraPage = () => {
   return (

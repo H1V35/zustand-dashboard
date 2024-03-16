@@ -5,7 +5,7 @@ import {
   IoLockClosedOutline,
   IoPawOutline,
 } from 'react-icons/io5';
-import { WhiteCard } from '../../components';
+import { WhiteCard } from '@/components';
 
 export const Dashboard = () => {
   return (
