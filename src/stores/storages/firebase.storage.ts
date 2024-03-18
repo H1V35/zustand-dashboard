@@ -15,11 +15,11 @@ const storageApi: StateStorage = {
   },
 
   setItem: async function (name: string, value: string): Promise<void> {
-    const data = await fetch(`${firebaseUrl}/${name}.json`, {
+    // TODO: Avoid race condition with AbortController provided by Axios
+    await fetch(`${firebaseUrl}/${name}.json`, {
       method: 'PUT',
       body: value,
     }).then((res) => res.json());
-    console.log(data);
 
     return;
   },
