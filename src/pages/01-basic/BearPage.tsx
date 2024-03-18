@@ -1,6 +1,6 @@
 import { useShallow } from 'zustand/react/shallow';
 import { WhiteCard } from '@/components';
-import { useBearStore } from '@/stores';
+import { useBearsStore } from '@/stores';
 
 export const BearPage = () => {
   return (
@@ -23,11 +23,11 @@ export const BearPage = () => {
 };
 
 export const BlackBears = () => {
-  const blackBears = useBearStore((state) => state.blackBears);
-  const increaseBlackBears = useBearStore((state) => state.increaseBlackBears);
+  const blackBears = useBearsStore((state) => state.blackBears);
+  const increaseBlackBears = useBearsStore((state) => state.increaseBlackBears);
 
   // ! NOT RECOMENDED: It causes unnecessary renders
-  // const {blackBears, increaseBlackBears} = useBearStore((state) => state);
+  // const {blackBears, increaseBlackBears} = useBearsStore((state) => state);
 
   return (
     <WhiteCard centered>
@@ -43,8 +43,8 @@ export const BlackBears = () => {
 };
 
 export const PolarBears = () => {
-  const polarBears = useBearStore((state) => state.polarBears);
-  const increasePolarBears = useBearStore((state) => state.increasePolarBears);
+  const polarBears = useBearsStore((state) => state.polarBears);
+  const increasePolarBears = useBearsStore((state) => state.increasePolarBears);
 
   return (
     <WhiteCard centered>
@@ -60,8 +60,8 @@ export const PolarBears = () => {
 };
 
 export const PandaBears = () => {
-  const pandaBears = useBearStore((state) => state.pandaBears);
-  const increasePandaBears = useBearStore((state) => state.increasePandaBears);
+  const pandaBears = useBearsStore((state) => state.pandaBears);
+  const increasePandaBears = useBearsStore((state) => state.increasePandaBears);
 
   return (
     <WhiteCard centered>
@@ -80,10 +80,10 @@ export const BearsDisplay = () => {
   // const bears = useBearStore((state) => state.bears);
   // useShallow: Prevents renders when nothing changes
 
-  const bears = useBearStore(useShallow((state) => state.bears));
-  const doNothing = useBearStore((state) => state.doNothing);
-  const addBear = useBearStore((state) => state.addBear);
-  const clearBears = useBearStore((state) => state.clearBears);
+  const bears = useBearsStore(useShallow((state) => state.bears));
+  const doNothing = useBearsStore((state) => state.doNothing);
+  const addBear = useBearsStore((state) => state.addBear);
+  const clearBears = useBearsStore((state) => state.clearBears);
 
   return (
     <WhiteCard>
