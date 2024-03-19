@@ -1,8 +1,8 @@
-import { Task, TaskStatus } from '@/interfaces';
 import { StateCreator, create } from 'zustand';
+import type { Task, TaskStatus } from '@/interfaces';
 
 interface TasksState {
-  tasks: Record<string, Task>;
+  tasks: Record<string, Task>; // { [key: string]: Task }
 
   getTaskByStatus: (status: TaskStatus) => Task[];
 }

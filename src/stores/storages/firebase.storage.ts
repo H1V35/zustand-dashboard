@@ -1,4 +1,4 @@
-import { StateStorage, createJSONStorage } from 'zustand/middleware';
+import { type StateStorage, createJSONStorage } from 'zustand/middleware';
 
 const firebaseUrl =
   'https://zustand-storage-hive-default-rtdb.europe-west1.firebasedatabase.app/zustand';

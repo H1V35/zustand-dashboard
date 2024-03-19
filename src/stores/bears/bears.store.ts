@@ -1,4 +1,4 @@
-import { StateCreator, create } from 'zustand';
+import { type StateCreator, create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface Bear {

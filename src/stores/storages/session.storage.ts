@@ -1,4 +1,4 @@
-import { StateStorage, createJSONStorage } from 'zustand/middleware';
+import { type StateStorage, createJSONStorage } from 'zustand/middleware';
 
 const storageApi: StateStorage = {
   getItem: function (name: string): string | Promise<string | null> | null {
