@@ -10,6 +10,8 @@ interface TasksState {
 
   setDraggingTaskId: (taskId: string) => void;
   removeDraggingTaskId: () => void;
+  changeTaskStatus: (taskId: string, status: TaskStatus) => void;
+  onTaskDrop: (status: TaskStatus) => void;
 }
 
 const tasksStoreApi: StateCreator<TasksState> = (set, get) => ({
@@ -33,6 +35,26 @@ const tasksStoreApi: StateCreator<TasksState> = (set, get) => ({
 
   removeDraggingTaskId: () => {
     set({ draggingTaskId: undefined });
+  },
+
+  changeTaskStatus: (taskId: string, status: TaskStatus) => {
+    const task = get().tasks[taskId];
+    task.status = status;
+
+    set((state) => ({
+      tasks: {
+        ...state.tasks,
+        [taskId]: task,
+      },
+    }));
+  },
+
+  onTaskDrop: (status: TaskStatus) => {
+    const taskId = get().draggingTaskId;
+    if (!taskId) return;
+
+    get().changeTaskStatus(taskId, status);
+    get().removeDraggingTaskId();
   },
 });
 
