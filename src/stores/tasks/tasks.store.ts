@@ -1,6 +1,7 @@
 import { StateCreator, create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
 import { devtools } from 'zustand/middleware';
+// import { immer } from 'zustand/middleware/immer';
 import type { Task, TaskStatus } from '@/interfaces';
 
 interface TasksState {
@@ -34,6 +35,12 @@ const tasksStoreApi: StateCreator<TasksState> = (set, get) => ({
   addTask: (title: string, status: TaskStatus) => {
     const newTask = { id: uuidv4(), title, status };
 
+    // Require immer middleware of Zustand - Add types to StateCreator: [["zustand/immer", never]]
+    // set((state) => {
+    //   state.tasks[newTask.id] = newTask;
+    // });
+
+    // Native form of Zustand
     set((state) => ({
       tasks: {
         ...state.tasks,
@@ -54,6 +61,15 @@ const tasksStoreApi: StateCreator<TasksState> = (set, get) => ({
     const task = get().tasks[taskId];
     task.status = status;
 
+    // Require immer middleware of Zustand - Add types to StateCreator: [["zustand/immer", never]]
+    // set((state) => {
+    //   state.tasks[taskId] = {
+    //     ...state.tasks[taskId],
+    //     status,
+    //   };
+    // });
+
+    // Native form of Zustand
     set((state) => ({
       tasks: {
         ...state.tasks,
@@ -71,4 +87,10 @@ const tasksStoreApi: StateCreator<TasksState> = (set, get) => ({
   },
 });
 
-export const useTasksStore = create<TasksState>()(devtools(tasksStoreApi));
+export const useTasksStore = create<TasksState>()(
+  devtools(
+    // immer(
+    tasksStoreApi
+    // )
+  )
+);
