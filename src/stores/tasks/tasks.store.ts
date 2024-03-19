@@ -1,6 +1,6 @@
 import { StateCreator, create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
-import { devtools } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
 // import { immer } from 'zustand/middleware/immer';
 import type { Task, TaskStatus } from '@/interfaces';
 
@@ -17,7 +17,7 @@ interface TasksState {
   onTaskDrop: (status: TaskStatus) => void;
 }
 
-const tasksStoreApi: StateCreator<TasksState> = (set, get) => ({
+const tasksStoreApi: StateCreator<TasksState, [['zustand/persist', unknown]]> = (set, get) => ({
   draggingTaskId: undefined,
 
   tasks: {
@@ -89,8 +89,13 @@ const tasksStoreApi: StateCreator<TasksState> = (set, get) => ({
 
 export const useTasksStore = create<TasksState>()(
   devtools(
-    // immer(
-    tasksStoreApi
-    // )
+    persist(
+      // immer(
+      tasksStoreApi,
+      // )
+      {
+        name: 'tasks-store',
+      }
+    )
   )
 );
