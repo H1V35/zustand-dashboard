@@ -1,22 +1,28 @@
 import { WhiteCard } from '@/components';
-import { useWeddingBoundStore } from '@/stores/wedding';
+import { useWeddingInvitation } from '@/hooks/useWeddingInvitation';
 
 export const WeddingInvitationPage = () => {
-  const firstName = useWeddingBoundStore((state) => state.firstName);
-  const lastName = useWeddingBoundStore((state) => state.lastName);
-  const setFirstName = useWeddingBoundStore((state) => state.setFirstName);
-  const setLastName = useWeddingBoundStore((state) => state.setLastName);
+  const {
+    firstName,
+    lastName,
+    guestsCount,
+    eventDate,
+    eventYYYYMMDD,
+    eventHHMM,
+    isConfirmed,
+    setFirstName,
+    setLastName,
+    setGuestsCount,
+    setEventDate,
+    setEventTime,
+    setIsConfirmed,
+  } = useWeddingInvitation();
 
-  const guestsCount = useWeddingBoundStore((state) => state.guestsCount);
-  const setGuestsCount = useWeddingBoundStore((state) => state.setGuestsCount);
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  const eventYYYYMMDD = useWeddingBoundStore((state) => state.eventYYYYMMDD());
-  const eventHHMM = useWeddingBoundStore((state) => state.eventHHMM());
-  const setEventDate = useWeddingBoundStore((state) => state.setEventDate);
-  const setEventTime = useWeddingBoundStore((state) => state.setEventTime);
-
-  const isConfirmed = useWeddingBoundStore((state) => state.isConfirmed);
-  const setIsConfirmed = useWeddingBoundStore((state) => state.setIsConfirmed);
+    console.log({ firstName, lastName, guestsCount, eventDate, isConfirmed });
+  };
 
   return (
     <>
@@ -26,7 +32,7 @@ export const WeddingInvitationPage = () => {
 
       <WhiteCard className="flex items-center justify-center p-12">
         <div className="mx-auto w-full max-w-[550px]">
-          <form>
+          <form onSubmit={onSubmit}>
             <div className="-mx-3 flex flex-wrap">
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
