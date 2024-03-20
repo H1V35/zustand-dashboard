@@ -13,10 +13,8 @@ export const WeddingInvitationPage = () => {
             <div className="-mx-3 flex flex-wrap">
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
-                  <label className="mb-3 block text-base font-medium text-[#07074D]">
-                    Primer Nombre
-                  </label>
-                  <input type="text" name="firstName" id="firstName" placeholder="Primer Nombre" />
+                  <label className="mb-3 block text-base font-medium text-[#07074D]">Nombre</label>
+                  <input type="text" name="firstName" id="firstName" placeholder="Nombre" />
                 </div>
               </div>
               <div className="w-full px-3 sm:w-1/2">
