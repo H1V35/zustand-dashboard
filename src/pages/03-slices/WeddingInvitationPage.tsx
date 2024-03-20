@@ -15,6 +15,9 @@ export const WeddingInvitationPage = () => {
   const setEventDate = useWeddingBoundStore((state) => state.setEventDate);
   const setEventTime = useWeddingBoundStore((state) => state.setEventTime);
 
+  const isConfirmed = useWeddingBoundStore((state) => state.isConfirmed);
+  const setIsConfirmed = useWeddingBoundStore((state) => state.setIsConfirmed);
+
   return (
     <>
       <h1>Invitación de Boda</h1>
@@ -107,11 +110,25 @@ export const WeddingInvitationPage = () => {
               </label>
               <div className="flex items-center space-x-6">
                 <div className="flex items-center">
-                  <input type="radio" name="isComing" id="radioButton1" className="h-5 w-5" />
+                  <input
+                    type="radio"
+                    name="isComing"
+                    id="radioButton1"
+                    checked={isConfirmed}
+                    onChange={() => setIsConfirmed(true)}
+                    className="h-5 w-5"
+                  />
                   <label className="pl-3 text-base font-medium text-[#07074D]">Si</label>
                 </div>
                 <div className="flex items-center">
-                  <input type="radio" name="isComing" id="radioButton2" className="h-5 w-5" />
+                  <input
+                    type="radio"
+                    name="isComing"
+                    id="radioButton2"
+                    checked={!isConfirmed}
+                    onChange={() => setIsConfirmed(false)}
+                    className="h-5 w-5"
+                  />
                   <label className="pl-3 text-base font-medium text-[#07074D]">No</label>
                 </div>
               </div>
