@@ -1,5 +1,5 @@
-import { tesloApi } from '@/api/tesloApi';
 import { AxiosError } from 'axios';
+import { tesloApi } from '@/api/tesloApi';
 
 export interface LoginResponse {
   id: string;
