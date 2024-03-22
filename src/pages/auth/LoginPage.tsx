@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/stores';
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
   const loginUser = useAuthStore((state) => state.loginUser);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // const { email, password, remember } = event.target as HTMLFormElement;
     const { email, password, remember } = event.target as typeof event.target & {
@@ -11,8 +13,15 @@ export const LoginPage = () => {
       password: { value: string };
       remember: { checked: boolean };
     };
+
     console.log(email.value, password.value, remember.checked);
-    loginUser(email.value, password.value);
+
+    try {
+      await loginUser(email.value, password.value);
+      navigate('/dashboard');
+    } catch (error) {
+      console.log('Cannot authenticate');
+    }
 
     // email.value = '';
     // password.value = '';
