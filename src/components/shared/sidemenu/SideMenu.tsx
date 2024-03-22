@@ -52,6 +52,7 @@ const menuItems: MenuItem[] = [
 ];
 
 export const SideMenu = () => {
+  const userName = useAuthStore((state) => state.user?.fullName || 'No user');
   const logoutUser = useAuthStore((state) => state.logoutUser);
 
   return (
@@ -79,7 +80,7 @@ export const SideMenu = () => {
               alt=""
             />
           </span>
-          <span className="text-sm md:text-base font-bold">Edward Tompson</span>
+          <span className="text-sm md:text-base font-bold">{userName}</span>
         </a>
       </div>
 
